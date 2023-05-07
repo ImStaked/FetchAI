@@ -5,12 +5,17 @@ MONIKER="YOURNAME"
 CHAIN_ID="fetchhub-4"
 VERSION="v0.10.6"
 
+cd ~
+
 # Update the system and install prerequesits
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove 
 sudo apt install make gcc zip unzip pigz git -y
 
 # Install go NOT WORKING
-
+wget https://raw.githubusercontent.com/ImStaked/FetchAI/main/installer/go_installer.sh
+chmod +x go_installer.sh
+/home/fetch/go_installer.sh
+source /home/fetch/.bashrc
 
 # Build the binary from source
 git clone https://github.com/fetchai/fetchd.git && cd fetchd 
@@ -19,8 +24,7 @@ make build
 make install
 sudo ln -s ~/go/bin/fetchd /usr/local/bin/fetchd
 
-# Ensure the correct configuration
-# not needed rm ~/.fetchd/config/app.toml ~/.fetchd/config/config.toml
+# Init Node and get genesis
 fetchd init $MONIKER --chain-id $CHAIN_ID
 curl https://raw.githubusercontent.com/fetchai/genesis-fetchhub/fetchhub-4/fetchhub-4/data/genesis_migrated_5300200.json --output ~/.fetchd/config/genesis.json
 
