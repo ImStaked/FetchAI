@@ -163,3 +163,11 @@ echo -e "\nGo $VERSION was installed into $GOROOT.\nMake sure to relogin into yo
 echo -e "\n\tsource $shell_profile\n\nto update your environment variables."
 echo "Tip: Opening a new terminal window usually just works. :)"
 rm -f "$TEMP_DIRECTORY/go.tar.gz"
+
+# Use Root
+# Update the system and install prerequesits
+sudo apt update && sudo apt upgrade -y 
+sudo apt install make gcc zip unzip pigz git -y
+useradd -U -s /bin/bash -m -d /home/fetch fetch
+usermod -a -G sudo fetch
+
