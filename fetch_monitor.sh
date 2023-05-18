@@ -34,7 +34,7 @@ function check_fetch
     FET_DIFF=$((FET_HEIGHT-FET_PUB_HEIGHT))
     if [ -z "$FET_HEIGHT" ]
     then
-       curl -H "Content-Type: application/json" -X POST -d '{"content":"'"FETCH node is : Did not return a block height number"'"}'  $discord_url 
+       curl -H "Content-Type: application/json" -X POST -d '{"content":"'"FETCH node: Did not return a block height number"'"}'  $discord_url 
     fi
     if [ "$FET_catchup_status" = true ]
     then
